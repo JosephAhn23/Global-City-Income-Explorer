@@ -27,9 +27,20 @@
         
         <div id="map"></div>
         
-        <div class="cities-list">
-            <h3>All Cities (Ordered by Income)</h3>
-            <ol id="citiesOrderedList"></ol>
+        <div class="cities-table-container">
+            <h3>All Cities with Coordinates</h3>
+            <table id="citiesTable">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>X (Longitude)</th>
+                        <th>Y (Latitude)</th>
+                        <th>Median Income</th>
+                    </tr>
+                </thead>
+                <tbody id="citiesTableBody"></tbody>
+            </table>
         </div>
         
         <div class="legend">

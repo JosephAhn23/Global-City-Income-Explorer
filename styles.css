@@ -111,57 +111,82 @@ header p {
     z-index: 1;
 }
 
-.cities-list {
+.cities-table-container {
     padding: 30px;
     background: #f8f9fa;
     border-top: 2px solid #e9ecef;
-    max-height: 500px;
+    max-height: 600px;
     overflow-y: auto;
 }
 
-.cities-list h3 {
+.cities-table-container h3 {
     color: #667eea;
     margin-bottom: 20px;
     font-size: 1.5em;
     text-align: center;
 }
 
-#citiesOrderedList {
-    list-style: decimal;
-    padding-left: 30px;
-    column-count: 2;
-    column-gap: 40px;
-}
-
-.city-list-item {
-    padding: 12px 15px;
-    margin-bottom: 8px;
+#citiesTable {
+    width: 100%;
+    border-collapse: collapse;
     background: white;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    break-inside: avoid;
-    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.city-list-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+#citiesTable thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
 }
 
-.city-name {
-    font-weight: 500;
+#citiesTable th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#citiesTable tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s;
+}
+
+#citiesTable tbody tr:last-child {
+    border-bottom: none;
+}
+
+#citiesTable tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+#citiesTable td {
+    padding: 12px 15px;
     color: #333;
-    flex: 1;
 }
 
-.city-income {
+.city-name-cell {
+    font-weight: 500;
+    color: #667eea;
+}
+
+.country-cell {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.coord-cell {
+    font-family: 'Courier New', monospace;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.income-cell {
     font-weight: bold;
     color: #27ae60;
-    font-size: 1.1em;
-    margin-left: 15px;
+    font-size: 1.05em;
 }
 
 .legend {
@@ -232,12 +257,18 @@ header p {
         height: 400px;
     }
     
-    #citiesOrderedList {
-        column-count: 1;
+    .cities-table-container {
+        max-height: 400px;
+        padding: 15px;
     }
     
-    .cities-list {
-        max-height: 400px;
+    #citiesTable {
+        font-size: 0.85em;
+    }
+    
+    #citiesTable th,
+    #citiesTable td {
+        padding: 8px 10px;
     }
 }
 

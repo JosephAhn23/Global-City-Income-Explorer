@@ -129,24 +129,27 @@ document.getElementById('cityInfo').innerHTML = `
     Click on any city marker on the map or use the search box to explore cities and their median income data.
 `;
 
-// Create ordered list of cities sorted by income (highest to lowest)
-function populateCitiesList() {
-    const listContainer = document.getElementById('citiesOrderedList');
+// Create table with all cities showing x, y coordinates
+function populateCitiesTable() {
+    const tableBody = document.getElementById('citiesTableBody');
     
     // Sort cities by income (descending)
     const sortedCities = [...citiesData].sort((a, b) => b.income - a.income);
     
-    sortedCities.forEach((city, index) => {
-        const listItem = document.createElement('li');
-        listItem.className = 'city-list-item';
-        listItem.innerHTML = `
-            <span class="city-name">${city.name}, ${city.country}</span>
-            <span class="city-income">${formatIncome(city.income)}</span>
+    sortedCities.forEach((city) => {
+        const row = document.createElement('tr');
+        row.className = 'city-table-row';
+        row.innerHTML = `
+            <td class="city-name-cell">${city.name}</td>
+            <td class="country-cell">${city.country}</td>
+            <td class="coord-cell">${city.lng.toFixed(4)}</td>
+            <td class="coord-cell">${city.lat.toFixed(4)}</td>
+            <td class="income-cell">${formatIncome(city.income)}</td>
         `;
         
-        // Make list items clickable to focus on map
-        listItem.style.cursor = 'pointer';
-        listItem.addEventListener('click', () => {
+        // Make rows clickable to focus on map
+        row.style.cursor = 'pointer';
+        row.addEventListener('click', () => {
             const marker = markers.find(m => m.cityData === city);
             if (marker) {
                 map.setView([city.lat, city.lng], 8);
@@ -155,18 +158,18 @@ function populateCitiesList() {
             }
         });
         
-        listItem.addEventListener('mouseenter', () => {
-            listItem.style.backgroundColor = '#f0f0f0';
+        row.addEventListener('mouseenter', () => {
+            row.style.backgroundColor = '#f0f7ff';
         });
         
-        listItem.addEventListener('mouseleave', () => {
-            listItem.style.backgroundColor = 'transparent';
+        row.addEventListener('mouseleave', () => {
+            row.style.backgroundColor = 'transparent';
         });
         
-        listContainer.appendChild(listItem);
+        tableBody.appendChild(row);
     });
 }
 
-// Populate the list when page loads
-populateCitiesList();
+// Populate the table when page loads
+populateCitiesTable();
 
