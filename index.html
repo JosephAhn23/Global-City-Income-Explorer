@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global City Income Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Global City Income Explorer</h1>
+            <p>Scroll and click on cities to see their median income</p>
+        </header>
+        
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="citySearch" placeholder="Search for a city...">
+                <button id="searchBtn">Search</button>
+            </div>
+            <div class="info-panel" id="infoPanel">
+                <h3>City Information</h3>
+                <p id="cityInfo">Click on a city marker or search to see details</p>
+            </div>
+        </div>
+        
+        <div id="map"></div>
+        
+        <div class="cities-list">
+            <h3>All Cities (Ordered by Income)</h3>
+            <ol id="citiesOrderedList"></ol>
+        </div>
+        
+        <div class="legend">
+            <h4>Median Income (USD/year)</h4>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #2ecc71;"></span>
+                <span>$80,000+</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #3498db;"></span>
+                <span>$60,000 - $80,000</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #f39c12;"></span>
+                <span>$40,000 - $60,000</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #e74c3c;"></span>
+                <span>Below $40,000</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="cities-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
